@@ -1,3 +1,7 @@
 .hidde {
     display: none !important;
 }
+
+.wallet {
+    background-size: cover;
+}
