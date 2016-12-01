@@ -25,51 +25,48 @@
                     </div>
                 </div>
             </div>
+            <div class="row column right aligned hidde" id="admin">
+                <div class="ui button green" id="done">Aprovar</div>
+                <div class="ui button red" id="cancel">Cancelar</div>
+            </div>
             <div class="row column left aligned">
                 <div class="ui card">
                     <div class="content">
-                        <div class="right floated meta">
-                            <div class="ui dropdown hidde">
-                                <i class="dropdown icon"></i>
-                                <div class="text">Admin</div>
-                                <div class="menu">
-                                    <div class="item">Done</div>
-                                    <div class="item">Cancel</div>
-                                </div>
-                            </div>
-                        </div>
-                        <img id="meetupAvatar" class="ui avatar image wallet" style="background-image: url(/img/ethereum.png)"> Wallet
+                        <div class="truncate" id="owner">Admin: </div>
                     </div>
                     <div class="image">
                         <img class="ui wireframe image" src="/img/ethereum.png">
                     </div>
                     <div class="content">
-                        <div class="header">Nome (0 ETH)</div>
-                        <div class="description">Descrição</div>
+                        <div class="header" id="name_amount_need">Nome (0 ETH)</div>
+                        <div class="description" id="description">Descrição</div>
                     </div>
                     <div class="content">
                         <span class="right floated">
-                            <i class="share icon"></i>0 ETH
+                            <i class="share icon"></i><span id="cashback">0 ETH</span>
                         </span>
-                        <i class="money icon"></i>0 ETH
+                        <i class="money icon"></i><span id="balance">0/0 ETH</span>
                     </div>
                     <div class="extra content center aligned">
-                        <div class="ui labeled button" tabindex="0">
+                        <div class="ui labeled button" id="join">
                             <div class="ui green button">
                                 Participar
                             </div>
-                            <span class="ui basic green left pointing label">0 ETH</span>
+                            <span class="ui basic green left pointing label" id="invitation_value">0 ETH</span>
                         </div>
-                        <div class="ui labeled button hidde" tabindex="0">
+                        <div class="ui labeled button hidde" id="withdraw">
                             <div class="ui yellow button">
                                 Sacar
                             </div>
-                            <span class="ui basic yellow left pointing label">0 ETH</span>
+                            <span class="ui basic yellow left pointing label" id="withdraw_value">0 ETH</span>
                         </div>
-                        <div class="ui red button hidde">Sair</div>
-                    </div>
-                    <div class="ui bottom indicating attached progress">
-                        <div class="bar"></div>
+                        <div class="ui labeled button hidde" id="leave">
+                            <div class="ui red button">
+                                Sair
+                            </div>
+                            <span class="ui basic red left pointing label" id="leave_value">0 ETH</span>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,7 +75,6 @@
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/semantic.min.js"></script>
-    <script type="text/javascript" src="js/geopattern.min.js"></script>
     <script type="text/javascript" src="js/web3.min.js"></script>
     <script type="text/javascript" src="js/app.js?2"></script>
 </body>
