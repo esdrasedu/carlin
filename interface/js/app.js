@@ -86,52 +86,49 @@ function updateMeetup(){
         $("#withdraw").addClass("hidde");
 }
 
-function callMeetup(action, value, args, callback) {
-    var currentAccount = $("#accounts").val();
-    var method = meetup[action];
-    var data = method.getData.apply(method, args);
-    var gas = web3.eth.estimateGas({
-        from:currentAccount, to: meetup.address,
-        value: value, data: data});
-    args.push({from: currentAccount, gas: gas, gasPrice: web3.eth.gasPrice, value: value});
-    args.push(callback);
-    method.apply(meetup, args);
-}
-
 function join(){
+    var currentAccount = $("#accounts").val();
     $("#join").addClass("hidde");
-    callMeetup("join", meetup.invitation_value(), [], function(error, success){
-        if(error)
+    meetup.join({value: meetup.invitation_value(), from: currentAccount}, function(error, success){
+        if(error){
+            $("#join").removeClass("hidde");
             message("Erro", "Não foi possivel entrar no evento", "warning");
-        else
+        } else {
             message("Sucesso", "Foi possivel cadastrar-se no evento", "positive");
-
+        }
     });
 }
 
 function leave(){
+    var currentAccount = $("#accounts").val();
     $("#leave").addClass("hidde");
-    callMeetup("leave", 0, [], function(error, success){
-        if(error)
+    meetup.leave({from: currentAccount}, function(error, success){
+        if(error){
+            $("#leave").removeClass("hidde");
             message("Erro", "Não foi possivel cancelar sua particação", "warning");
-        else
+        } else {
             message("Sucesso", "Seu cancelamento foi efetuado com sucesso", "positive");
+        }
     });
 
 }
 
 function withdraw(){
+    var currentAccount = $("#accounts").val();
     $("#withdraw").addClass("hidde");
-    callMeetup("withdraw", 0, [], function(error, success){
-        if(error)
+    meetup.withdraw({from: currentAccount}, function(error, success){
+        if(error){
+            $("#withdraw").removeClass("hidde");
             message("Erro", "Não foi possivel sacar seu reembolso", "warning");
-        else
+        } else {
             message("Sucesso", "O reembolso foi sacado com sucesso", "positive");
+        }
     });
 }
 
 function done(){
-    callMeetup("done", 0, [], function(error, success){
+    var currentAccount = $("#accounts").val();
+    meetup.done({from: currentAccount}, function(error, success){
         if(error)
             message("Erro", "Não foi possivel aprovar o evento", "warning");
         else
@@ -140,7 +137,8 @@ function done(){
 }
 
 function cancel(){
-    callMeetup("cancel", 0, [], function(error, success){
+    var currentAccount = $("#accounts").val();
+    meetup.cancel({from: currentAccount}, function(error, success){
         if(error)
             message("Erro", "Não foi possivel cancelar o evento", "warning");
         else
