@@ -37,7 +37,6 @@ function getContract(address){
     var MeetupContract = web3.eth.contract(abiArray);
     meetup = MeetupContract.at(address);
     meetup.allEvents(function(){
-        console.log("All events", arguments);
         updateMeetup();
     });
     updateMeetup();
@@ -74,7 +73,6 @@ function updateMeetup(){
     else
         $("#join").addClass("hidde");
 
-    console.log(meetup.status().toNumber() == 0 && meetup.participants(currentAccount));
     if(meetup.status().toNumber() == 0 && meetup.participants(currentAccount))
         $("#leave").removeClass("hidde");
     else

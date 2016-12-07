@@ -43,8 +43,10 @@ contract MeetupContract {
     _;
   }
 
-  function MeetupContract(string _name, string _description,
-                          uint _amount_needed, uint _max_participants,
+  function MeetupContract(string _name,
+                          string _description,
+                          uint _amount_needed,
+                          uint _max_participants,
                           uint _min_participants) {
     owner = msg.sender;
     name = _name;
@@ -107,9 +109,7 @@ contract MeetupContract {
     }
   }
 
-  function kill() onlyOwner {
-    selfdestruct(owner);
-  }
+  function kill() onlyOwner {selfdestruct(owner);}
 
-  function() payable { }
+  function() payable {}
 }
